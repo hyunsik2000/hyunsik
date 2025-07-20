@@ -9,7 +9,7 @@ import Activity from './pages/Activity';
 
 function App() {
   return (
-    <div className=" bg-white dark:bg-slate-900">
+    <div className="min-w-[400px] bg-white dark:bg-slate-900">
       <main>
         <Home />
         <Header />

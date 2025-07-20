@@ -19,7 +19,7 @@ const Header = () => {
   const tabs = [
     { name: '기술', id: 'skill' },
     { name: '프로젝트', id: 'project' },
-    { name: '활동사항', id: 'activity' }
+    { name: '활동', id: 'activity' }
   ];
 
   return (
@@ -42,7 +42,7 @@ const Header = () => {
               <button
                 key={tab.name}
                 onClick={() => scrollToSection(tab.id)}
-                className={`px-6 py-2 rounded-full text-sm font-medium transition-colors  bg-gray-100 dark:bg-slate-700 text-gray-600 dark:text-slate-300 hover:bg-gray-200 dark:hover:bg-slate-600 hover:text-gray-900'
+                className={`px-4 py-2 rounded-full text-sm font-medium transition-colors bg-gray-100 dark:bg-slate-700 text-gray-600 dark:text-slate-300 hover:bg-gray-200 dark:hover:bg-slate-600 hover:text-gray-900'
                 }`}
               >
                 {tab.name}
