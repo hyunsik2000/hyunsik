@@ -10,14 +10,12 @@ import Activity from './pages/Activity';
 function App() {
   return (
     <div className="min-w-[400px] bg-white dark:bg-slate-900">
-      <main>
         <Home />
         <Header />
         <About/>
         <Skills/>
         <Projects/>
         <Activity/>
-      </main>
       <Footer />
     </div>
   );

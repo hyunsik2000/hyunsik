@@ -6,11 +6,18 @@ const Header = () => {
   useEffect(() => {
     initialTheme();
   }, []);
-  // 섹션으로 스크롤하는 함수
+  
+  // 섹션으로 스크롤하는 함수 (Header 높이만큼 offset 추가)
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
     if (element) {
-      element.scrollIntoView({
+      const headerHeight = 80; // Header의 대략적인 높이 (px)
+      const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+      const offsetPosition = elementPosition - headerHeight;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
       });
     }
   };
@@ -23,12 +30,12 @@ const Header = () => {
   ];
 
   return (
-    <div className="sticky top-0 z-40 bg-white dark:bg-slate-900  border-gray-200 dark:border-slate-700 backdrop-blur">
+    <div className="sticky top-0 z-40 bg-white dark:bg-slate-900 border-gray-200 dark:border-slate-700 backdrop-blur">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-center items-center py-4">
           {/* 네비게이션 탭 */}
           <nav className="flex space-x-1 bg-gray-100 dark:bg-slate-700 rounded-full p-1">
-                        <button
+            <button
               onClick={() => scrollToSection('about')}
               className="flex items-center justify-center p-2 rounded-full hover:bg-gray-200 dark:hover:bg-slate-600 transition-colors"
             >
@@ -42,8 +49,7 @@ const Header = () => {
               <button
                 key={tab.name}
                 onClick={() => scrollToSection(tab.id)}
-                className={`px-4 py-2 rounded-full text-sm font-medium transition-colors bg-gray-100 dark:bg-slate-700 text-gray-600 dark:text-slate-300 hover:bg-gray-200 dark:hover:bg-slate-600 hover:text-gray-900'
-                }`}
+                className="px-4 py-2 rounded-full text-sm font-medium transition-colors bg-gray-100 dark:bg-slate-700 text-gray-600 dark:text-slate-300 hover:bg-gray-200 dark:hover:bg-slate-600 hover:text-gray-900 dark:hover:text-white"
               >
                 {tab.name}
               </button>
