@@ -1,40 +1,49 @@
 import React from 'react';
+import SlideUpSection from '../components/SlideUpSection';
 
 const About = () => {
-  const capabilities = [
-    {
-      title: '모던 프론트엔드 개발',
-      description: 'React.js를 이용한 프론트엔드 개발경험이 있으며, JavaScript(ES6), TypeScript에 능숙합니다. Next.js와 더불어 핵심적인 React library 활용 경험이 있습니다.',
-      skills: ['React.js', 'JavaScript', 'TypeScript', 'Next.js'],
-      icon: '⚛️'
-    },
-    {
-      title: '웹사이트 개선 및 최적화',
-      description: '웹사이트를 개발하고 유지보수하면서, 웹사이트의 성능을 측정하고 개선했습니다. 또, 검색엔진 최적화 작업을 통해 유입 트래픽을 6개월간 25.6% 증가시킨 경험이 있습니다.',
-      skills: ['Performance', 'SEO', 'Optimization', 'Analytics'],
-      icon: '🚀'
-    },
-    {
-      title: '커뮤니케이션 및 협업',
-      description: 'Github 이용한 협업 경험이 있으며, Jira, Slack, Notion 등의 협업 도구 사용 경험도 있습니다. 기획, 디자인, 총무 등 다양한 직무 경험을 기반으로 다른 직군과 원활한 커뮤니케이션이 가능합니다.',
-      skills: ['Git', 'Jira', 'Slack', 'Notion'],
-      icon: '🤝'
-    },
-    {
-      title: '문제 해결 및 학습 능력',
-      description: '새로운 기술을 빠르게 학습하고 적용하는 능력을 가지고 있습니다. 복잡한 문제를 체계적으로 분석하고 해결하는 것을 좋아하며, 지속적인 자기계발을 통해 성장하고 있습니다.',
-      skills: ['Problem Solving', 'Quick Learning', 'Research', 'Documentation'],
-      icon: '🧠'
-    }
-  ];
+const capabilities = [
+  {
+    title: 'React 기반 프론트엔드 개발',
+    description: '진행한 대부분 프로젝트에서 React.js를 활용한 개발 하였습니다. JavaScript(ES6+), CSS3, tailwindcss를 기반으로 컴포넌트 기반 웹 애플리케이션을 구현할 수 있습니다.',
+    skills: ['React.js', 'JavaScript (ES6+)', 'CSS3', 'tailwindcss'],
+    icon: '⚛️'
+  },
+  {
+    title: '실시간 데이터 처리 및 API 연동',
+    description: 'Naver Map API, SocketJS를 활용한 실시간 통신 구현과 AWS S3 연동 경험이 있습니다. Context API를 통한 전역 상태 관리와 RESTful API 통신으로 동적인 웹 서비스를 개발할 수 있습니다.',
+    skills: ['SocketJS', 'Context API', 'REST API', 'AWS S3'],
+    icon: '🔄'
+  },
+  {
+    title: '협업 도구 활용 및 프로젝트 관리',
+    description: 'GitHub을 통한 버전 관리와 팀 협업 경험이 있으며, Notion과 Figma를 활용해 명확한 개발 가이드를 작성하여 규칙을 정하여 개발한 경험이 있습니다.',
+    skills: ['Git', 'GitHub', 'Notion', 'Figma'],
+    icon: '🤝'
+  },
+  {
+    title: '사용자 경험 개선 및 성능 최적화',
+    description: '동영상 스트리밍, 무한 스크롤을 구현하면서 매끄러운 사용자 경험을 고민하였습니다. 직관적인 UI/UX 설계를 통해 사용자 편의성 향상에 집중합니다.',
+    skills: ['UX/UI', 'Performance', 'Streaming', 'Optimization'],
+    icon: '🎯'
+  }
+];
 
   return (
-    <section className="py-16 bg-white dark:bg-slate-900">
+    <SlideUpSection>
+    <section id="about" className="py-20">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold text-gray-900 dark:text-slate-100 mb-4">핵심 역량</h2>
+          <h1 className='text-3xl sm:text-4xl font-bold mb-8 dark:text-white'>
+          개발자 <span className='bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600 dark:from-emerald-400 dark:via-teal-400 dark:to-cyan-400 bg-clip-text text-transparent'>
+            류현식
+          </span>은
+          </h1>
+
           <p className="text-lg text-gray-600 dark:text-slate-300">
-            유연하게 소통하고 견고하게 개발합니다.
+            다수의 협업을 통한 개발 경험을 통해 <span className='bg-gradient-to-r font-bold from-violet-600 to-indigo-600 dark:from-violet-400 dark:to-indigo-400 bg-clip-text text-transparent'>소통</span>
+            과 <span className='bg-gradient-to-br font-semibold from-amber-500 to-orange-600 dark:from-amber-400 dark:to-orange-500 bg-clip-text text-transparent'>존중</span>
+            을 중요시 여깁니다. 
           </p>
         </div>
 
@@ -74,6 +83,7 @@ const About = () => {
         </div>
       </div>
     </section>
+    </SlideUpSection>
   );
 };
 
