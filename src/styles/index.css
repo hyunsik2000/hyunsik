@@ -1,0 +1,9 @@
+
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  * {
+    font-family: 'Nanum Gothic', sans-serif;
+  }
+}
