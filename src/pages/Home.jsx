@@ -19,7 +19,7 @@ const Home = () => {
   return (
     <SlideUpSection>
       <div id="home">
-        <section className="py-20 sm:py-20 min-h-screen bg-white dark:bg-slate-900 flex flex-col justify-center items-center">
+        <section className="py-20 sm:py-20 bg-white dark:bg-slate-900 flex flex-col justify-center items-center">
           <div className="max-w-4xl mx-auto sm:px-8 lg:px-8 w-full">
             <div className="text-center">
               <div className="flex justify-center mb-6 sm:mb-8">
