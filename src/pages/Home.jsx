@@ -52,7 +52,7 @@ const Home = () => {
               </h1>
               <div className='flex justify-center mb-8'>
                 <img 
-                src="/src/assets/img/My_Icon.webp" 
+                src="/assets/img/My_Icon.webp" 
                 alt="Logo" 
                 className="w-32 h-32 rounded-full p-0 m=0"
               />

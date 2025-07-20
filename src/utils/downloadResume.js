@@ -7,7 +7,7 @@
  */
 export const downloadResume = (
   fileName = '류현식_프론트엔드_이력서.pdf',
-  filePath = '/src/assets/resume/류현식_프론트엔드_이력서.pdf'
+  filePath = 'assets/resume/류현식_프론트엔드_이력서.pdf'
 ) => {
   try {
     const link = document.createElement('a');
@@ -39,7 +39,7 @@ export const downloadResumeByFormat = (format = 'pdf') => {
   const fileConfigs = {
     pdf: {
       fileName: '류현식_프론트엔드_이력서.pdf',
-      filePath: '/src/assets/resume/류현식_프론트엔드_이력서.pdf'
+      filePath: 'assets/resume/류현식_프론트엔드_이력서.pdf'
     }
   };
 
