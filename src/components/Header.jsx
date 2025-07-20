@@ -6,11 +6,6 @@ const Header = () => {
   useEffect(() => {
     initialTheme();
   }, []);
-
-  const toggleTheme = () => {
-    document.documentElement.classList.toggle('dark');
-  };
-
   // 섹션으로 스크롤하는 함수
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
@@ -38,7 +33,7 @@ const Header = () => {
               className="flex items-center justify-center p-2 rounded-full hover:bg-gray-200 dark:hover:bg-slate-600 transition-colors"
             >
               <img 
-                src="/public/assets/img/My_Icon.webp" 
+                src="/assets/img/My_Icon.webp" 
                 alt="Logo" 
                 className="w-6 h-6 rounded-full"
               />
