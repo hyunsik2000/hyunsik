@@ -83,11 +83,11 @@ const About = () => {
             }`}
           >
             <h2 className="text-4xl md:text-5xl font-bold mb-4">
-              <span className="bg-gradient-to-r from-slate-800 via-slate-700 to-slate-900 dark:from-white dark:via-slate-200 dark:to-slate-300 bg-clip-text text-transparent">
-                My Capabilities
-              </span>
+              <h2 className="text-3xl font-bold text-gray-900 dark:text-slate-100 mb-4">
+                About Me
+              </h2>
             </h2>
-            <p className="text-lg text-slate-600 dark:text-slate-300">
+            <p className="text-xl text-slate-600 dark:text-slate-300">
               다수의 협업을 통한 개발 경험을 통해{" "}
               <span className="font-bold bg-gradient-to-r from-violet-600 to-indigo-600 dark:from-violet-400 dark:to-indigo-400 bg-clip-text text-transparent">
                 소통

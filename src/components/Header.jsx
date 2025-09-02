@@ -30,7 +30,7 @@ const Header = () => {
   ];
 
   return (
-    <div className="sticky top-4 z-50">
+    <div className="sticky top-4 z-30">
       <div className="flex justify-center items-center">
         {/* 네비게이션 탭 */}
         <nav className="flex bg-gray-100 dark:bg-slate-700 rounded-full p-1">

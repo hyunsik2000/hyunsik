@@ -205,17 +205,6 @@ const Skills = () => {
                     >
                       {exp}
                     </span>
-
-                    {/* 호버시 나타나는 화살표 */}
-                    <div
-                      className={`ml-auto transition-all duration-300 transform ${
-                        hoveredExp === index
-                          ? "opacity-100 translate-x-0"
-                          : "opacity-0 translate-x-2"
-                      }`}
-                    >
-                      <div className="text-blue-500 text-sm">→</div>
-                    </div>
                   </div>
                 ))}
               </div>

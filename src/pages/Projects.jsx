@@ -1,197 +1,164 @@
-import React from 'react';
-import SlideUpSection from '../components/SlideUpSection';
+import React, { useState, useEffect, useRef } from "react";
+import SlideUpSection from "../components/SlideUpSection";
+import ProjectModal from "../components/ProjectModal";
+import { projectsData } from "../data/projectsData";
 
 const Projects = () => {
-  const projects = [
-    {
-      id: 1,
-      title: 'CaféFlow',
-      subtitle: '실시간 카페 좌석 확인 서비스',
-      description: '사용자에게 실시간으로 카페 별 좌석의 이용 현황 정보를 전달하는 서비스입니다. 지도를 통해 위치 근처 카페를 검색하고, 카페의 혼잡도 및 정보를 확인할 수 있습니다.',
-      role: '조장 & Frontend Developer',
-      keyFeatures: [
-        'Naver Map API 연동 및 지도 구현',
-        'SocketJS를 이용한 실시간 데이터 통신',
-        'Context API를 통한 사용자 정보 전역 관리',
-        'Axios를 통한 RESTful API 통신'
-      ],
-      techStack: ['React', 'JavaScript', 'Naver Map API', 'SocketJS', 'Axios', 'Context API'],
-      highlights: [
-        '실시간 카페 혼잡도 표시',
-        '지도 기반 카페 검색',
-        '1대1 채팅 기능',
-        '커뮤니티 게시판 기능'
-      ],
-      color: 'bg-blue-50 dark:bg-blue-900/20',
-      iconColor: 'text-blue-500 dark:text-blue-400',
-      icon: '☕',
-      githubUrl: 'https://github.com/hyunsik2000/CafeFlow-FrontEnd'
-    },
-    {
-      id: 2,
-      title: 'Fizz!',
-      subtitle: 'Wellness Challenge 커뮤니티',
-      description: 'Wellness한 작은 활동을 short-form 형태로 승화시킨 웰니스 챌린지 커뮤니티입니다.',
-      role: 'Frontend 팀장',
-      keyFeatures: [
-        '영상 스트리밍 구현 (hls.js)',
-        '숏폼 영상 스크롤 UI 개발',
-        '동영상 업로드 시스템 구현',
-        'AWS S3 & SSE 활용'
-      ],
-      techStack: ['React', 'JavaScript', 'hls.js', 'AWS S3', 'SSE', 'Intersection Observer API'],
-      highlights: [
-        '무한 스크롤 숏폼 UI',
-        '실시간 업로드 진행률',
-        '메모리 최적화'
-      ],
-      color: 'bg-green-50 dark:bg-green-900/20',
-      iconColor: 'text-green-500 dark:text-green-400',
-      icon: '🥤',
-      githubUrl: 'https://github.com/Fizz-challenge/Fizz_front'
-    },
-    {
-      id: 3,
-      title: 'hyunsik',
-      subtitle: '개인 포트폴리오',
-      description: 'React와 Tailwind CSS를 활용하여 개발한 개인 포트폴리오 웹사이트입니다.',
-      role: 'Frontend Developer',
-      keyFeatures: [
-        'React 컴포넌트 기반 개발',
-        'Tailwind CSS 스타일링',
-        '반응형 웹 디자인',
-      ],
-      techStack: ['React', 'JavaScript', 'Tailwind CSS', 'Vite', 'HTML5', 'CSS3'],
-      highlights: [
-        '컴포넌트 기반 구조',
-      ],
-      color: 'bg-purple-50 dark:bg-purple-900/20',
-      iconColor: 'text-purple-500 dark:text-purple-400',
-      icon: '💼',
-      githubUrl: 'https://github.com/hyunsik2000/hyunsik'
-    }
-  ];
+  const [selectedProject, setSelectedProject] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef(null);
 
-  const openGitHub = (url) => {
-    window.open(url, '_blank', 'noopener,noreferrer');
+  // 모달 열릴 때 body 스크롤 제어 제거 (모달에서 처리)
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  const handleProjectClick = (project) => {
+    setSelectedProject(project);
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setTimeout(() => setSelectedProject(null), 300);
   };
 
   return (
     <SlideUpSection>
-    <section id="project" className="py-20">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold text-gray-900 dark:text-slate-100 mb-4">프로젝트</h2>
-          <p className="text-lg text-gray-600 dark:text-slate-300">
-            지금까지 진행한 주요 프로젝트들을 소개합니다.
-          </p>
-        </div>
+      <section
+        ref={sectionRef}
+        id="project"
+        className="py-24 bg-gradient-to-br from-slate-50 via-blue-50/30 to-indigo-100/20 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900"
+      >
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* 헤더 섹션 */}
+          <div
+            className={`text-center mb-20 transition-all duration-1000 ${
+              isVisible
+                ? "opacity-100 translate-y-0"
+                : "opacity-0 translate-y-8"
+            }`}
+          >
+            <h2 className="text-4xl md:text-5xl font-bold mb-4">
+              <span className="bg-gradient-to-r from-slate-800 via-slate-700 to-slate-900 dark:from-white dark:via-slate-200 dark:to-slate-300 bg-clip-text text-transparent">
+                Projects
+              </span>
+            </h2>
+            <p className="text-lg text-slate-600 dark:text-slate-300">
+              진행한 주요 프로젝트들을 소개합니다
+            </p>
+            {/* 언더라인 애니메이션 */}
+            <div
+              className="mx-auto mt-4 h-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full transition-all duration-1000 delay-500"
+              style={{ width: isVisible ? "80px" : "0px" }}
+            ></div>
+          </div>
 
-        <div className="space-y-12">
-          {projects.map((project) => (
-            <div 
-              key={project.id} 
-              className={`${project.color} rounded-2xl p-8 border border-gray-200 dark:border-slate-700 hover:shadow-xl transition-all duration-300`}
-            >
-              <div className="grid lg:grid-cols-3 gap-8">
-                {/* 프로젝트 정보 */}
-                <div className="lg:col-span-2">
-                  <div className="flex items-center mb-4">
-                    <span className={`text-4xl mr-4 ${project.iconColor}`}>{project.icon}</span>
-                    <div>
-                      <h3 className="text-2xl font-bold text-gray-900 dark:text-slate-100">{project.title}</h3>
-                      <p className="text-lg text-gray-600 dark:text-slate-300">{project.subtitle}</p>
+          {/* 프로젝트 카드 그리드 */}
+          <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-8">
+            {projectsData.map((project, index) => (
+              <div
+                key={project.id}
+                className={`group cursor-pointer transform transition-all duration-700 hover:-translate-y-2 ${
+                  isVisible
+                    ? "opacity-100 translate-y-0"
+                    : "opacity-0 translate-y-12"
+                }`}
+                style={{ transitionDelay: `${index * 200}ms` }}
+                onClick={() => handleProjectClick(project)}
+              >
+                {/* 카드 글로우 효과 */}
+                <div className="absolute -inset-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-2xl opacity-0 group-hover:opacity-20 blur transition-opacity duration-300"></div>
+
+                {/* 메인 카드 - 고정 높이 */}
+                <div
+                  className={`relative bg-white dark:bg-slate-800 rounded-2xl p-6 border ${project.borderColor} hover:border-transparent shadow-lg hover:shadow-xl transition-all duration-300 h-80 flex flex-col`}
+                >
+                  {/* 카드 헤더 */}
+                  <div className="flex-shrink-0 mb-4">
+                    <div className="flex items-start justify-between mb-3">
+                      <div className="flex-1">
+                        <h3 className="text-xl font-bold text-gray-900 dark:text-slate-100 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-200 mb-1">
+                          {project.title}
+                        </h3>
+                        <p className="text-sm text-slate-500 dark:text-slate-400">
+                          {project.role}
+                        </p>
+                      </div>
                     </div>
-                  </div>
-                  
-                  <p className="text-gray-700 dark:text-slate-300 mb-6 leading-relaxed">
-                    {project.description}
-                  </p>
-                  
-                  <div className="mb-6">
-                    <span className="inline-block bg-gray-100 dark:bg-slate-700 text-gray-800 dark:text-slate-200 px-3 py-1 rounded-full text-sm font-medium">
-                      {project.role}
-                    </span>
+
+                    {/* 서브타이틀 */}
+                    <p className="text-slate-600 dark:text-slate-300 font-medium">
+                      {project.subtitle}
+                    </p>
                   </div>
 
-                  {/* 주요 기능 */}
-                  <div className="mb-6">
-                    <h4 className="font-semibold text-gray-900 dark:text-slate-100 mb-3">🔧 주요 기능</h4>
-                    <ul className="space-y-2">
-                      {project.keyFeatures.map((feature, idx) => (
-                        <li key={idx} className="text-sm text-gray-700 dark:text-slate-300 flex items-start">
-                          <span className="mr-2 text-gray-400 dark:text-slate-500">•</span>
-                          {feature}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
+                  {/* 설명 - flex-grow로 남은 공간 채우기 */}
+                  <div className="flex-grow flex flex-col">
+                    <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed mb-6 flex-grow overflow-hidden">
+                      {project.description.length > 100
+                        ? `${project.description.substring(0, 100)}...`
+                        : project.description}
+                    </p>
 
-                {/* 사이드 정보 */}
-                <div className="space-y-6">
-                  {/* 기술 스택 */}
-                  <div>
-                    <h4 className="font-semibold text-gray-900 dark:text-slate-100 mb-3">🛠 Tech Stack</h4>
-                    <div className="flex flex-wrap gap-2">
-                      {project.techStack.map((tech, idx) => (
-                        <span 
-                          key={idx}
-                          className="bg-white dark:bg-slate-800 text-gray-700 dark:text-slate-300 px-3 py-1 rounded-full text-xs font-medium border border-gray-200 dark:border-slate-600"
-                        >
-                          {tech}
-                        </span>
-                      ))}
+                    {/* 주요 기술 (최대 3개) */}
+                    <div className="flex-shrink-0 mb-4">
+                      <div className="flex flex-wrap gap-2">
+                        {project.techStack
+                          .slice(0, 3)
+                          .map((tech, techIndex) => (
+                            <span
+                              key={techIndex}
+                              className="px-2.5 py-1 bg-gray-100 dark:bg-slate-700 text-gray-700 dark:text-slate-300 rounded-md text-xs font-medium"
+                            >
+                              {tech}
+                            </span>
+                          ))}
+                        {project.techStack.length > 3 && (
+                          <span className="px-2.5 py-1 bg-gray-200 dark:bg-slate-600 text-gray-600 dark:text-slate-400 rounded-md text-xs font-medium">
+                            +{project.techStack.length - 3}개
+                          </span>
+                        )}
+                      </div>
                     </div>
-                  </div>
 
-                  {/* 주요 성과 */}
-                  <div>
-                    <h4 className="font-semibold text-gray-900 dark:text-slate-100 mb-3">✨ Highlights</h4>
-                    <ul className="space-y-2">
-                      {project.highlights.map((highlight, idx) => (
-                        <li key={idx} className="text-sm text-gray-700 dark:text-slate-300 flex items-center">
-                          <span className="w-2 h-2 bg-blue-400 dark:bg-blue-500 rounded-full mr-3"></span>
-                          {highlight}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  {/* 프로젝트 링크 */}
-                  <div className="pt-4">
-                    <button 
-                      onClick={() => openGitHub(project.githubUrl)}
-                      className="w-full flex items-center justify-center bg-gray-900 dark:bg-slate-700 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-gray-800 dark:hover:bg-slate-600 transition-colors group"
-                    >
-                      <svg className="w-5 h-5 mr-2 group-hover:scale-110 transition-transform" fill="currentColor" viewBox="0 0 24 24">
-                       <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.30.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                      </svg>
-                      GitHub 보기
-                    </button>
+                    {/* 카드 하단 - 더보기 표시 */}
+                    <div className="flex-shrink-0 flex items-center justify-between pt-4 border-t border-gray-200 dark:border-slate-700">
+                      <span className="text-sm text-slate-500 dark:text-slate-400">
+                        자세히 보기
+                      </span>
+                      <div className="text-blue-500 dark:text-blue-400 group-hover:translate-x-1 transition-transform duration-200">
+                        →
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          ))}
-        </div>
-
-        {/* 프로젝트 요약 */}
-        <div className="mt-16 bg-gray-50 dark:bg-slate-800 rounded-2xl p-8">
-          <h3 className="text-xl font-bold text-gray-900 dark:text-slate-100 mb-6 text-center">프로젝트 경험 요약</h3>
-          <div className="grid md:grid-cols-2 gap-6">
-            <div className="text-center">
-              <div className="text-3xl font-bold text-blue-500 dark:text-blue-400 mb-2">2+</div>
-              <p className="text-gray-600 dark:text-slate-300">협업 프로젝트</p>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold text-purple-500 dark:text-purple-400 mb-2">3</div>
-              <p className="text-gray-600 dark:text-slate-300">팀 리더 경험</p>
-            </div>
+            ))}
           </div>
         </div>
-      </div>
-    </section>
+
+        {/* 프로젝트 상세 모달 */}
+        <ProjectModal
+          project={selectedProject}
+          isOpen={isModalOpen}
+          onClose={closeModal}
+        />
+      </section>
     </SlideUpSection>
   );
 };
