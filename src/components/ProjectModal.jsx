@@ -76,17 +76,15 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
         {/* 모달 컨텐츠 */}
         <div className="p-8 space-y-8">
           {/* 프로젝트 설명 */}
-          {project.description && (
-            <div>
-              <h4 className="text-xl font-semibold text-gray-900 dark:text-slate-100 mb-4 flex items-center">
-                <div className="w-1 h-6 bg-blue-500 rounded-full mr-3"></div>
-                프로젝트 개요
-              </h4>
-              <p className="text-slate-600 dark:text-slate-300 leading-relaxed text-lg whitespace-pre-line">
-                {project.description}
-              </p>
-            </div>
-          )}
+          <div>
+            <h4 className="text-xl font-semibold text-gray-900 dark:text-slate-100 mb-4 flex items-center">
+              <div className="w-1 h-6 bg-blue-500 rounded-full mr-3"></div>
+              프로젝트 개요
+            </h4>
+            <p className="text-slate-600 dark:text-slate-300 leading-relaxed text-lg whitespace-pre-line">
+              {project.detail}
+            </p>
+          </div>
 
           {/* 역할 */}
           {project.role && (
