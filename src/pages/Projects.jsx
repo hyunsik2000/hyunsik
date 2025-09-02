@@ -39,11 +39,7 @@ const Projects = () => {
 
   return (
     <SlideUpSection>
-      <section
-        ref={sectionRef}
-        id="project"
-        className="py-24 bg-gradient-to-br from-slate-50 via-blue-50/30 to-indigo-100/20 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900"
-      >
+      <section ref={sectionRef} id="project" className="py-20">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* 헤더 섹션 */}
           <div
@@ -54,9 +50,9 @@ const Projects = () => {
             }`}
           >
             <h2 className="text-4xl md:text-5xl font-bold mb-4">
-              <span className="bg-gradient-to-r from-slate-800 via-slate-700 to-slate-900 dark:from-white dark:via-slate-200 dark:to-slate-300 bg-clip-text text-transparent">
-                Projects
-              </span>
+              <h2 className="text-2xl font-bold text-gray-900 dark:text-slate-100 mb-4">
+                프로젝트
+              </h2>
             </h2>
             <p className="text-lg text-slate-600 dark:text-slate-300">
               진행한 주요 프로젝트들을 소개합니다
@@ -73,7 +69,7 @@ const Projects = () => {
             {projectsData.map((project, index) => (
               <div
                 key={project.id}
-                className={`group cursor-pointer transform transition-all duration-700 hover:-translate-y-2 ${
+                className={`group relative cursor-pointer transform transition-all duration-700 hover:-translate-y-2 ${
                   isVisible
                     ? "opacity-100 translate-y-0"
                     : "opacity-0 translate-y-12"
