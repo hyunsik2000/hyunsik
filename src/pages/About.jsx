@@ -83,9 +83,13 @@ const About = () => {
             }`}
           >
             <h2 className="text-4xl md:text-5xl font-bold mb-4">
-              <h2 className="text-3xl font-bold text-gray-900 dark:text-slate-100 mb-4">
-                About Me
+              <h2 className="text-2xl font-bold text-gray-900 dark:text-slate-100 mb-4">
+                About me
               </h2>
+              <div
+                className="mx-auto mt-4 h-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full transition-all duration-1000 delay-500"
+                style={{ width: isVisible ? "80px" : "0px" }}
+              ></div>
             </h2>
             <p className="text-xl text-slate-600 dark:text-slate-300">
               다수의 협업을 통한 개발 경험을 통해{" "}

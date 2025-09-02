@@ -115,6 +115,10 @@ const Skills = () => {
             <p className="text-lg text-gray-600 dark:text-slate-300">
               현재 사용할 수 있는 기술들입니다.
             </p>
+            <div
+              className="mx-auto mt-4 h-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full transition-all duration-1000 delay-500"
+              style={{ width: isVisible ? "80px" : "0px" }}
+            ></div>
           </div>
 
           {/* Frontend Skills */}
