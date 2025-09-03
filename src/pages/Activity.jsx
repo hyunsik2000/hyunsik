@@ -88,13 +88,13 @@ const Activity = () => {
             <h2 className="text-2xl font-bold text-gray-900 dark:text-slate-100 mb-4">
               활동 사항
             </h2>
+            <p className="mt-4 text-lg text-gray-600 dark:text-gray-300">
+              학업 과정과 다양한 활동들을 통해 쌓아온 경험들입니다
+            </p>
             <div
               className="mx-auto mt-4 h-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full transition-all duration-1000 delay-500"
               style={{ width: isVisible ? "80px" : "0px" }}
             />
-            <p className="mt-4 text-lg text-gray-600 dark:text-gray-300">
-              학업 과정과 다양한 활동들을 통해 쌓아온 경험들입니다
-            </p>
           </div>
 
           {/* 활동 섹션 (동아리/부트캠프) */}
