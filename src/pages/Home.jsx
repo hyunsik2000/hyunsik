@@ -47,7 +47,7 @@ const Home = () => {
               </h1>
               <h1 className="text-2xl sm:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-slate-100 mb-2 sm:mb-4">
                 <span className="bg-gradient-to-r from-violet-600 to-indigo-600 dark:from-violet-400 dark:to-indigo-400 bg-clip-text text-transparent">
-                  프론트엔드 신입 개발자
+                  프론트엔드 개발자
                 </span>
               </h1>
               <h1 className="text-2xl sm:text-4xl lg:text-5xl font-bold mb-6 sm:mb-8">
