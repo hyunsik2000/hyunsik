@@ -53,8 +53,7 @@ const Activity = () => {
       title: "패스트캠퍼스 교육",
       institution: "부트 캠프 - 개인",
       period: "2024.11 - 2025.01",
-      description:
-        "클론 코딩 미니 프로젝트로 웹 개발 전체 프로세스 학습, 2D Canvas·Three.js 중급 과정",
+      description: "클론 코딩 미니 프로젝트 학습, 2D Canvas·Three.js 중급 과정",
       gradient: "from-cyan-500 to-blue-600",
     },
   ];
