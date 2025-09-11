@@ -12,14 +12,14 @@ const About = () => {
 
   const capabilities = [
     {
-      title: "React 기반 프론트엔드 개발",
+      title: "사용자 경험 개선 및 성능 최적화",
       description:
-        "컴포넌트 재사용성을 고려한 설계를 통해 반복 작업 시간을 크게 단축시켰습니다. 반복 회의를 통해 더 나은 구조를 지속적으로 고민합니다.",
-      skills: ["React", "JavaScript", "CSS", "tailwindcss"],
-      icon: "⚛️",
-      gradient: "from-blue-500 to-purple-600",
-      shadowColor: "shadow-blue-500/20",
-      personality: "재사용성을 생각하는",
+        "무한 스크롤 비디오 재생 플랫폼을 개발하며 사용자가 다음 영상을 기다리는 시간을 줄이기 위해 고민했습니다. 비디오 간 로딩 속도를 체감상 확실히 개선시켜 더 부드러운 시청 경험을 제공할 수 있었습니다.",
+      skills: ["UX/UI", "Performance"],
+      icon: "🎯",
+      gradient: "from-purple-500 to-pink-600",
+      shadowColor: "shadow-purple-500/20",
+      personality: "사용자 경험을 생각해보는",
     },
     {
       title: "실시간 데이터 처리 및 API 연동",
@@ -42,14 +42,14 @@ const About = () => {
       personality: "소통을 좋아하는",
     },
     {
-      title: "사용자 경험 개선 및 성능 최적화",
+      title: "React 기반 프론트엔드 개발",
       description:
-        "무한 스크롤 비디오 재생 플랫폼을 개발하며 사용자가 다음 영상을 기다리는 시간을 줄이기 위해 고민했습니다. 비디오 간 로딩 속도를 체감상 확실히 개선시켜 더 부드러운 시청 경험을 제공할 수 있었습니다.",
-      skills: ["UX/UI", "Performance"],
-      icon: "🎯",
-      gradient: "from-purple-500 to-pink-600",
-      shadowColor: "shadow-purple-500/20",
-      personality: "사용자 경험을 생각해보는",
+        "컴포넌트 재사용성을 고려한 설계를 통해 반복 작업 시간을 크게 단축시켰습니다. 반복 회의를 통해 더 나은 구조를 지속적으로 고민합니다.",
+      skills: ["React", "JavaScript", "CSS", "tailwindcss"],
+      icon: "⚛️",
+      gradient: "from-blue-500 to-purple-600",
+      shadowColor: "shadow-blue-500/20",
+      personality: "재사용성을 생각하는",
     },
   ];
 
