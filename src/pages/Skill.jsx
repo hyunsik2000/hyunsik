@@ -79,11 +79,10 @@ const Skills = () => {
   ];
 
   const additionalExperience = [
-    "Next.js 현재 학습중",
     "Vercel 활용 프로젝트 배포",
-    "JWT 토큰을 활용한 로그인/회원가입",
-    "반응형 웹 디자인 구현",
-    "외부 API 사용 (Naver Map, Kakao Map)",
+    "JWT 토큰을 활용한 권한 관리",
+    "반응형 웹 구현",
+    "외부 API 사용 (Naver Map, Kakao Login)",
     "SocketJs 기반 실시간 통신 환경 제공",
   ];
 
