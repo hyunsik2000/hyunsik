@@ -9,7 +9,6 @@ const Projects = () => {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef(null);
 
-  // 모달 열릴 때 body 스크롤 제어 제거 (모달에서 처리)
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -41,7 +40,6 @@ const Projects = () => {
     <SlideUpSection>
       <section ref={sectionRef} id="project" className="py-20">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* 헤더 섹션 */}
           <div
             className={`text-center mb-20 transition-all duration-1000 ${
               isVisible
@@ -49,27 +47,23 @@ const Projects = () => {
                 : "opacity-0 translate-y-8"
             }`}
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">
-              <h2 className="text-2xl font-bold text-gray-900 dark:text-slate-100 mb-4">
-                프로젝트
-              </h2>
+            <h2 className="text-2xl font-bold text-gray-900 dark:text-slate-100 mb-4">
+              프로젝트
             </h2>
             <p className="text-lg text-slate-600 dark:text-slate-300">
               진행한 주요 프로젝트들을 소개합니다
             </p>
-            {/* 언더라인 애니메이션 */}
             <div
-              className="mx-auto mt-4 h-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full transition-all duration-1000 delay-500"
+              className="mx-auto mt-4 h-1 bg-gray-300 dark:bg-slate-600 rounded-full transition-all duration-1000 delay-500"
               style={{ width: isVisible ? "80px" : "0px" }}
             ></div>
           </div>
 
-          {/* 프로젝트 카드 그리드 */}
           <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-8">
             {projectsData.map((project, index) => (
               <div
                 key={project.id}
-                className={`group relative cursor-pointer transform transition-all duration-700 hover:-translate-y-2 ${
+                className={`group relative cursor-pointer transform transition-all duration-700 hover:-translate-y-2 h-full ${
                   isVisible
                     ? "opacity-100 translate-y-0"
                     : "opacity-0 translate-y-12"
@@ -77,33 +71,32 @@ const Projects = () => {
                 style={{ transitionDelay: `${index * 200}ms` }}
                 onClick={() => handleProjectClick(project)}
               >
-                {/* 카드 글로우 효과 */}
-                <div className="absolute -inset-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-2xl opacity-0 group-hover:opacity-20 blur transition-opacity duration-300"></div>
-
-                {/* 메인 카드 - 고정 높이 */}
                 <div
-                  className={`relative bg-white dark:bg-slate-800 rounded-2xl p-6 border ${project.borderColor} hover:border-transparent shadow-lg hover:shadow-xl transition-all duration-300 h-80 flex flex-col`}
+                  className={`relative bg-white dark:bg-slate-800 rounded-2xl p-6 border ${project.borderColor} transition-all duration-300 h-full flex flex-col overflow-hidden`}
                 >
-                  {/* 카드 헤더 */}
+                  <div className={`absolute -top-10 -right-10 w-24 h-24 bg-gradient-to-br ${project.gradientColor} opacity-5 group-hover:opacity-10 transition-opacity duration-300 rounded-full blur-2xl`} />
                   <div className="flex-shrink-0 mb-4">
                     <div className="flex items-start justify-between mb-3">
                       <div className="flex-1">
-                        <h3 className="text-xl font-bold text-gray-900 dark:text-slate-100 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-200 mb-1">
+                        <h3 className="text-xl font-bold text-gray-900 dark:text-slate-100 mb-1">
                           {project.title}
                         </h3>
                         <p className="text-sm text-slate-500 dark:text-slate-400">
                           {project.role}
                         </p>
+                        {project.period && (
+                          <p className="text-xs text-slate-400 dark:text-slate-500 mt-0.5">
+                            {project.period}
+                          </p>
+                        )}
                       </div>
                     </div>
 
-                    {/* 서브타이틀 */}
                     <p className="text-slate-600 dark:text-slate-300 font-medium">
                       {project.subtitle}
                     </p>
                   </div>
 
-                  {/* 설명 - flex-grow로 남은 공간 채우기 */}
                   <div className="flex-grow flex flex-col">
                     <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed mb-6 flex-grow overflow-hidden">
                       {project.description.length > 100
@@ -111,7 +104,6 @@ const Projects = () => {
                         : project.description}
                     </p>
 
-                    {/* 주요 기술 (최대 3개) */}
                     <div className="flex-shrink-0 mb-4">
                       <div className="flex flex-wrap gap-2">
                         {project.techStack
@@ -132,7 +124,6 @@ const Projects = () => {
                       </div>
                     </div>
 
-                    {/* 카드 하단 - 더보기 표시 */}
                     <div className="flex-shrink-0 flex items-center justify-between pt-4 border-t border-gray-200 dark:border-slate-700">
                       <span className="text-sm text-slate-500 dark:text-slate-400">
                         자세히 보기
@@ -148,7 +139,6 @@ const Projects = () => {
           </div>
         </div>
 
-        {/* 프로젝트 상세 모달 */}
         <ProjectModal
           project={selectedProject}
           isOpen={isModalOpen}

@@ -8,7 +8,6 @@ const Home = () => {
     });
   };
 
-  // 이력서 다운로드 핸들러
   const handleDownloadResume = () => {
     const success = downloadResume();
     if (!success) {
@@ -23,19 +22,19 @@ const Home = () => {
           <div className="max-w-4xl mx-auto sm:px-8 lg:px-8 w-full">
             <div className="text-center">
               <div className="flex justify-center mb-6 sm:mb-8">
-                <div className="flex space-x-2">
-                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-violet-500 to-purple-600 dark:from-violet-400 dark:to-purple-500 rounded-lg flex items-center justify-center shadow-lg shadow-violet-500/30 dark:shadow-violet-400/20">
-                    <span className="text-white font-bold text-lg sm:text-xl">
+                <div className="flex space-x-1.5">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-slate-800 dark:bg-slate-200 rounded-lg flex items-center justify-center">
+                    <span className="text-white dark:text-slate-800 font-bold text-lg sm:text-xl">
                       L
                     </span>
                   </div>
-                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-emerald-500 to-teal-600 dark:from-emerald-400 dark:to-teal-500 rounded-full flex items-center justify-center shadow-lg shadow-emerald-500/30 dark:shadow-emerald-400/20">
-                    <span className="text-white font-bold text-lg sm:text-xl">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-slate-700 dark:bg-slate-300 rounded-lg flex items-center justify-center">
+                    <span className="text-white dark:text-slate-800 font-bold text-lg sm:text-xl">
                       H
                     </span>
                   </div>
-                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-amber-500 to-orange-600 dark:from-amber-400 dark:to-orange-500 rounded-full flex items-center justify-center shadow-lg shadow-amber-500/30 dark:shadow-amber-400/20">
-                    <span className="text-white font-bold text-lg sm:text-xl">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-slate-600 dark:bg-slate-400 rounded-lg flex items-center justify-center">
+                    <span className="text-white dark:text-slate-800 font-bold text-lg sm:text-xl">
                       S
                     </span>
                   </div>
@@ -45,32 +44,27 @@ const Home = () => {
               <h1 className="text-2xl sm:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-slate-100 mb-2 sm:mb-4">
                 안녕하세요,
               </h1>
-              <h1 className="text-2xl sm:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-slate-100 mb-2 sm:mb-4">
-                <span className="bg-gradient-to-r from-violet-600 to-indigo-600 dark:from-violet-400 dark:to-indigo-400 bg-clip-text text-transparent">
-                  프론트엔드 개발자
-                </span>
+              <h1 className="text-2xl sm:text-4xl lg:text-5xl font-bold text-blue-600 dark:text-blue-400 mb-2 sm:mb-4">
+                프론트엔드 개발자
               </h1>
-              <h1 className="text-2xl sm:text-4xl lg:text-5xl font-bold mb-6 sm:mb-8">
-                <span className="bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600 dark:from-emerald-400 dark:via-teal-400 dark:to-cyan-400 bg-clip-text text-transparent">
-                  류현식
-                </span>
-                <span className="text-gray-900 dark:text-slate-100">
-                  입니다
-                </span>
+              <h1 className="text-2xl sm:text-4xl lg:text-5xl font-bold mb-6 sm:mb-8 text-gray-900 dark:text-slate-100">
+                류현식입니다
               </h1>
+              <p className="max-w-xl mx-auto text-lg sm:text-xl text-slate-600 dark:text-slate-300 leading-relaxed mb-10 sm:mb-12">
+                지속 가능한 서비스를 고민하는 개발자입니다.
+              </p>
 
               <div className="flex justify-center mb-6 sm:mb-8">
                 <img
                   src="/assets/img/My_Icon.webp"
-                  alt="Logo"
+                  alt="프로필 사진"
                   className="w-24 h-24 sm:w-32 sm:h-32 rounded-full"
                 />
               </div>
 
-              {/* 다운로드 버튼 */}
               <button
                 onClick={handleDownloadResume}
-                className="mb-8 sm:mb-20 bg-gradient-to-r from-violet-500 to-purple-600 hover:from-violet-600 hover:to-purple-700 dark:from-violet-400 dark:to-purple-500 dark:hover:from-violet-500 dark:hover:to-purple-600 text-white px-6 py-2.5 sm:px-8 sm:py-3 rounded-xl transition-all duration-300 inline-flex items-center shadow-lg shadow-violet-500/25 hover:shadow-violet-500/40 text-sm sm:text-base"
+                className="mb-8 sm:mb-20 bg-slate-800 hover:bg-slate-700 dark:bg-slate-200 dark:hover:bg-slate-300 dark:text-slate-800 text-white px-6 py-2.5 sm:px-8 sm:py-3 rounded-xl transition-colors duration-200 inline-flex items-center text-sm sm:text-base cursor-pointer"
               >
                 <span className="mr-2">이력서 다운로드</span>
                 <svg
@@ -90,18 +84,17 @@ const Home = () => {
             </div>
           </div>
 
-          {/* 스크롤 다운 화살표 - absolute 제거하고 margin으로 처리 */}
           <div className="mt-auto mb-6 sm:mb-8">
             <button
               onClick={scrollToNext}
               className="group flex flex-col items-center cursor-pointer animate-bounce"
             >
-              <span className="text-xs sm:text-sm text-gray-500 dark:text-slate-400 mb-2 group-hover:text-violet-500 dark:group-hover:text-violet-400 transition-colors">
+              <span className="text-xs sm:text-sm text-gray-500 dark:text-slate-400 mb-2">
                 Scroll Down
               </span>
               <div className="flex flex-col space-y-1">
                 <svg
-                  className="w-5 h-5 sm:w-6 sm:h-6 text-gray-400 dark:text-slate-500 group-hover:text-violet-500 dark:group-hover:text-violet-400 transition-colors"
+                  className="w-5 h-5 sm:w-6 sm:h-6 text-gray-400 dark:text-slate-500"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"

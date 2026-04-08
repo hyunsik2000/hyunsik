@@ -6,11 +6,10 @@ const Header = () => {
     initialTheme();
   }, []);
 
-  // 섹션으로 스크롤하는 함수 (Header 높이만큼 offset 추가)
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
     if (element) {
-      const headerHeight = 80; // Header의 대략적인 높이 (px)
+      const headerHeight = 80;
       const elementPosition =
         element.getBoundingClientRect().top + window.pageYOffset;
       const offsetPosition = elementPosition - headerHeight;
@@ -22,7 +21,6 @@ const Header = () => {
     }
   };
 
-  // 탭 데이터
   const tabs = [
     { name: "기술", id: "skill" },
     { name: "프로젝트", id: "project" },
@@ -32,15 +30,14 @@ const Header = () => {
   return (
     <div className="sticky top-4 z-30">
       <div className="flex justify-center items-center">
-        {/* 네비게이션 탭 */}
         <nav className="flex bg-gray-100 dark:bg-slate-700 rounded-full p-1">
           <button
             onClick={() => scrollToSection("about")}
-            className="flex items-center justify-center p-2 rounded-full hover:bg-gray-200 dark:hover:bg-slate-600 transition-colors"
+            className="flex items-center justify-center p-2 rounded-full hover:bg-gray-200 dark:hover:bg-slate-600 transition-colors cursor-pointer"
           >
             <img
               src="/assets/img/My_Icon.webp"
-              alt="Logo"
+              alt="프로필 사진"
               className="w-6 h-6 rounded-full"
             />
           </button>
@@ -48,18 +45,17 @@ const Header = () => {
             <button
               key={tab.name}
               onClick={() => scrollToSection(tab.id)}
-              className="px-4 py-2 rounded-full text-sm font-medium transition-colors bg-gray-100 dark:bg-slate-700 text-gray-600 dark:text-slate-300 hover:bg-gray-200 dark:hover:bg-slate-600 hover:text-gray-900 dark:hover:text-white"
+              className="px-4 py-2 rounded-full text-sm font-medium transition-colors bg-gray-100 dark:bg-slate-700 text-gray-600 dark:text-slate-300 hover:bg-gray-200 dark:hover:bg-slate-600 hover:text-gray-900 dark:hover:text-white cursor-pointer"
             >
               {tab.name}
             </button>
           ))}
           <button
             onClick={darkToggle}
-            className="relative inline-flex items-center px-2 rounded-full transition-colors bg-gray-100 dark:bg-slate-700 text-gray-600 dark:text-slate-300 hover:bg-gray-200 dark:hover:bg-slate-600 hover:text-gray-900 dark:hover:text-white"
+            className="relative inline-flex items-center px-2 rounded-full transition-colors bg-gray-100 dark:bg-slate-700 text-gray-600 dark:text-slate-300 hover:bg-gray-200 dark:hover:bg-slate-600 hover:text-gray-900 dark:hover:text-white cursor-pointer"
             title="테마 전환"
           >
             <div className="relative w-5 h-5">
-              {/* 다크 모드 아이콘 (달) - 라이트 모드일 때 보임 */}
               <svg
                 className="w-5 h-5 dark:hidden"
                 fill="none"
@@ -74,7 +70,6 @@ const Header = () => {
                 />
               </svg>
 
-              {/* 라이트 모드 아이콘 (태양) - 다크 모드일 때 보임 */}
               <svg
                 className="w-5 h-5 hidden dark:block"
                 fill="none"

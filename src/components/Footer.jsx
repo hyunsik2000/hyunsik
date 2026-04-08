@@ -12,7 +12,6 @@ const Footer = () => {
       setShowToast(true);
       setTimeout(() => setShowToast(false), 2000);
     } catch (err) {
-      // 클립보드 API가 지원되지 않는 경우 대안
       const textArea = document.createElement("textarea");
       textArea.value = email;
       document.body.appendChild(textArea);
@@ -30,9 +29,7 @@ const Footer = () => {
         <div className="text-center mb-8">
           <div className="mb-8">
             <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
-              <span className="bg-gradient-to-r from-violet-600 to-blue-600 dark:from-violet-400 dark:to-blue-400 bg-clip-text text-transparent">
-                Let's Connect
-              </span>
+              Let's Connect
             </h2>
             <p className="text-lg text-gray-600 dark:text-gray-300 max-w-md mx-auto leading-relaxed">
               궁금한 점이 있으시다면
@@ -44,7 +41,6 @@ const Footer = () => {
           </div>
 
           <div className="flex flex-col items-center space-y-6 my-8">
-            {/* 전화번호 */}
             <button className="flex items-center text-gray-600 dark:text-slate-300 hover:text-green-500 dark:hover:text-green-400 transition-colors group cursor-pointer">
               <svg
                 className="w-5 h-5 mr-2 group-hover:scale-110 transition-transform"
@@ -62,7 +58,6 @@ const Footer = () => {
               010-7316-7616
             </button>
 
-            {/* 이메일 */}
             <button
               onClick={copyEmail}
               className="flex items-center text-gray-600 dark:text-slate-300 hover:text-blue-500 dark:hover:text-blue-400 transition-colors group cursor-pointer"
@@ -83,7 +78,6 @@ const Footer = () => {
               rhsik2000@gmail.com
             </button>
 
-            {/* GitHub */}
             <a
               href="https://github.com/hyunsik2000"
               className="flex items-center text-gray-600 dark:text-slate-300 hover:text-cyan-500 dark:hover:text-cyan-400 transition-colors group"
@@ -99,13 +93,29 @@ const Footer = () => {
               </svg>
               hyunsik2000
             </a>
+
+            <a
+              href="https://velog.io/@hyunsik2000/posts"
+              className="flex items-center text-gray-600 dark:text-slate-300 hover:text-teal-500 dark:hover:text-teal-400 transition-colors group"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <svg
+                className="w-5 h-5 mr-2 group-hover:scale-110 transition-transform"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+              </svg>
+              velog.io/@hyunsik2000
+            </a>
           </div>
         </div>
 
-        {/* Toast 알림 */}
         {showToast && (
           <div className="fixed bottom-6 left-1/2 transform -translate-x-1/2 z-50 animate-slide-up">
-            <div className="bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg flex items-center">
+            <div className="bg-green-500 text-white px-6 py-3 rounded-lg flex items-center">
               <svg
                 className="w-5 h-5 mr-2"
                 fill="none"

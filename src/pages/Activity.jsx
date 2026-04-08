@@ -3,62 +3,65 @@ import SlideUpSection from "../components/SlideUpSection";
 
 const Activity = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const [hoveredActivity, setHoveredActivity] = useState(null);
-  const [hoveredEdu, setHoveredEdu] = useState(null);
   const sectionRef = useRef(null);
 
-  // 학업 관련 데이터
-  const educationData = [
-    {
-      type: "education",
-      icon: "🎓",
-      title: "컴퓨터공학과 학사",
-      institution: "금오공과대학교",
-      period: "2019.03 - 2025.08",
-      gradient: "from-blue-500 to-indigo-600",
-    },
-    {
-      type: "certification",
-      icon: "🏆",
-      title: "정보처리기사",
-      institution: "한국산업인력공단",
-      period: "2024.12 취득",
-      gradient: "from-orange-500 to-red-600",
-    },
-    {
-      type: "certification",
-      icon: "🗣️",
-      title: "토익 (TOEIC) - 725점",
-      institution: "YBM",
-      period: "2025.02 응시",
-      gradient: "from-green-500 to-emerald-600",
-    },
-  ];
-
-  // 활동 관련 데이터
   const activityData = [
     {
-      type: "club",
-      icon: "🦁",
-      title: "멋쟁이사자처럼 12기",
-      institution: "동아리 활동 - Frontend 팀장",
-      period: "2024.03 - 2024.09",
-      description:
-        "React 스터디 리드 및 세미나 발표. 팀 프로젝트 UI/UX 설계·컴포넌트 구조 기획, GitHub 협업 프로세스 정립",
-      gradient: "from-purple-500 to-pink-600",
+      type: "Current",
+      title: "OZ Coding School",
+      institution: "프로젝트 기술 지원 및 협업",
+      period: "2026.04 - 현재",
+      description: "부트캠프 수료 후 차기 심화 프로젝트 기술 지원 용병",
+      skills: ["Technical Support", "Mentoring", "Collaboration"],
+      isCurrent: true
     },
     {
-      type: "bootcamp",
-      icon: "💻",
-      title: "패스트캠퍼스 교육",
-      institution: "부트 캠프 - 개인",
+      type: "Bootcamp",
+      title: "OZ Coding School 부트캠프",
+      institution: "웹 프론트엔드 부트캠프 15기",
+      period: "2025.09 - 2026.03",
+      description: "Next.js 심화와 Git Flow(Issue/PR/Review) 기반 실무 협업 프로세스를 내재화했습니다. SSR/CSR 최적화, SEO, 이미지·폰트 최적화 및 Tree Shaking 등 성능 개선을 통해 기술적 완성도를 높이는 경험을 학습 하였습니다. 프로젝트 FE 팀장으로서 프로젝트 과정 전반을 리딩했습니다.",
+      skills: ["Next.js", "React", "TypeScript", "AWS", "Git Flow", "Performance"],
+    },
+    {
+      type: "Bootcamp",
+      title: "패스트캠퍼스",
+      institution: "프론트엔드 개발 부트캠프",
       period: "2024.11 - 2025.01",
-      description: "클론 코딩 미니 프로젝트 학습, 2D Canvas·Three.js 중급 과정",
-      gradient: "from-cyan-500 to-blue-600",
+      description: "클론 코딩 미니 프로젝트 학습, 2D Canvas 및 Three.js 중급 과정 수료",
+      skills: ["JavaScript", "Canvas", "Three.js"],
+    },
+    {
+      type: "Club",
+      title: "멋쟁이사자처럼 12기",
+      institution: "금오공과대학교 - Frontend 팀장",
+      period: "2024.03 - 2024.09",
+      description: "React 스터디 리드 및 세미나 발표. Frontend 팀장 자격으로 전국 단위 서비스 해커톤 참여",
+      skills: ["React", "JavaScript", "GitHub", "Figma"],
     },
   ];
 
-  // 섹션이 뷰포트에 들어오면 isVisible=true로 전환
+  const educationData = [
+    {
+      type: "Certification",
+      title: "토익 (TOEIC) - 725점",
+      institution: "YBM",
+      period: "2025.02",
+    },
+    {
+      type: "Certification",
+      title: "정보처리기사",
+      institution: "한국산업인력공단",
+      period: "2024.12",
+    },
+    {
+      type: "Education",
+      title: "금오공과대학교",
+      institution: "컴퓨터공학과 학사",
+      period: "2019.03 - 2025.08",
+    },
+  ];
+
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => entry.isIntersecting && setIsVisible(true),
@@ -73,185 +76,100 @@ const Activity = () => {
       <section
         ref={sectionRef}
         id="activity"
-        className="py-20 bg-white dark:bg-slate-900 text-gray-900 dark:text-white transition-colors duration-300"
+        className="py-24 bg-white dark:bg-slate-900 transition-colors duration-300"
       >
-        <div className="max-w-6xl mx-auto px-6">
-          {/* 섹션 헤더 */}
+        <div className="max-w-4xl mx-auto px-6">
           <div
-            className={`text-center mb-16 transition-all duration-1000 ${
-              isVisible
-                ? "opacity-100 translate-y-0"
-                : "opacity-0 translate-y-8"
+            className={`text-center mb-20 transition-all duration-1000 ${
+              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
             }`}
           >
             <h2 className="text-2xl font-bold text-gray-900 dark:text-slate-100 mb-4">
-              활동 사항
+              활동 및 학업
             </h2>
-            <p className="mt-4 text-lg text-gray-600 dark:text-gray-300">
-              학업 과정과 다양한 활동들을 통해 쌓아온 경험들입니다
+            <p className="text-lg text-gray-600 dark:text-slate-300">
+              다양한 경험을 통해 꾸준히 성장해온 과정입니다
             </p>
             <div
-              className="mx-auto mt-4 h-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full transition-all duration-1000 delay-500"
+              className="mx-auto mt-4 h-1 bg-gray-300 dark:bg-slate-600 rounded-full transition-all duration-1000 delay-500"
               style={{ width: isVisible ? "80px" : "0px" }}
             />
           </div>
 
-          {/* 활동 섹션 (동아리/부트캠프) */}
-          <div>
-            <div className="grid md:grid-cols-2 gap-6">
+          <div className="mb-24">
+            <div className="flex items-center mb-12">
+              <span className="text-md text-gray-900 dark:text-slate-100 uppercase mr-4">활동 경험</span>
+              <div className="flex-grow h-px bg-gray-100 dark:bg-slate-800" />
+            </div>
+
+            <div className="space-y-16">
               {activityData.map((item, index) => (
-                <div
-                  key={index}
-                  className={`group relative transform transition-all duration-700 ${
-                    isVisible
-                      ? "opacity-100 translate-y-0"
-                      : "opacity-0 translate-y-12"
-                  }`}
-                  style={{ transitionDelay: `${index * 200}ms` }}
-                  onMouseEnter={() => setHoveredActivity(index)}
-                  onMouseLeave={() => setHoveredActivity(null)}
+                <div 
+                  key={index} 
+                  className={`flex flex-col md:flex-row gap-4 md:gap-12 lg:gap-20 transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+                  style={{ transitionDelay: `${index * 150}ms` }}
                 >
-                  {/* 카드 배경 그라데이션 글로우 */}
-                  <div
-                    className={`pointer-events-none absolute -inset-2 rounded-2xl bg-gradient-to-r ${item.gradient} opacity-0 group-hover:opacity-10 blur transition-opacity duration-500`}
-                  />
+                  <div className="md:w-32 pt-1 flex items-start gap-3">
+                    <span className={`${item.isCurrent ? "text-blue-500 dark:text-blue-400" : "text-gray-300 dark:text-slate-700"} mt-1`}>✦</span>
+                    <span className="text-sm font-bold text-gray-400 dark:text-slate-500 tabular-nums">
+                      {item.period}
+                    </span>
+                  </div>
 
-                  {/* 메인 카드 */}
-                  <div className="relative p-6 rounded-xl shadow-lg bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 transition-all duration-500 group-hover:-translate-y-2 group-hover:shadow-2xl overflow-hidden">
-                    {/* 상단 얇은 라인 + 호버 시 진행 바 */}
-                    <div className="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-transparent via-gray-200 dark:via-slate-600 to-transparent opacity-50" />
-                    <div
-                      className={`absolute top-0 left-0 h-2 bg-gradient-to-r ${
-                        item.gradient
-                      } transform transition-[width] duration-700 ${
-                        hoveredActivity === index ? "w-full" : "w-0"
-                      }`}
-                    />
-
-                    {/* 아이콘과 타입 */}
-                    <div className="flex items-center mb-4">
-                      <div
-                        className={`mr-4 flex items-center justify-center p-3 rounded-lg bg-gradient-to-r ${
-                          item.gradient
-                        } transition-transform duration-500 ${
-                          hoveredActivity === index ? "scale-110 rotate-6" : ""
-                        }`}
-                      >
-                        <span className="text-white text-2xl">{item.icon}</span>
-                      </div>
-                      <span className="text-sm font-medium px-3 py-1 rounded-full bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300">
-                        {item.type === "club" ? "동아리" : "부트캠프"}
+                  <div className="flex-grow">
+                    <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
+                      {item.title}
+                    </h3>
+                    <div className="flex flex-wrap items-center gap-x-3 gap-y-1 mb-4">
+                      <span className="text-sm font-semibold text-gray-500 dark:text-gray-400">
+                        {item.institution}
                       </span>
                     </div>
 
-                    {/* 내용 */}
-                    <h4 className="text-lg font-semibold mb-2 text-gray-800 dark:text-white">
-                      {item.title}
-                    </h4>
-                    <p className="text-sm mb-2 text-gray-600 dark:text-gray-300">
-                      {item.institution}
-                    </p>
-                    <div className="flex items-center mb-3 text-gray-500 dark:text-gray-400">
-                      <span className="mr-2">📅</span>
-                      <span className="text-sm">{item.period}</span>
+                    <div className="flex flex-wrap gap-2 mb-6">
+                      {item.skills.map((skill, sIdx) => (
+                        <span key={sIdx} className="px-2 py-0.5 text-[10px] font-bold border border-gray-200 dark:border-slate-700 rounded text-gray-500 dark:text-slate-400">
+                          {skill}
+                        </span>
+                      ))}
                     </div>
-                    <p className="text-sm text-gray-600 dark:text-gray-300">
+
+                    <p className="text-[15px] text-slate-600 dark:text-slate-400 leading-relaxed max-w-2xl px-4 border-l-2 border-gray-100 dark:border-slate-800">
                       {item.description}
                     </p>
-
-                    {/* 하단 러너 바 */}
-                    <div className="absolute bottom-0 left-0 right-0 h-1 overflow-hidden rounded-b-xl">
-                      <div
-                        className={`h-full bg-gradient-to-r ${
-                          item.gradient
-                        } transform transition-transform duration-700 ${
-                          hoveredActivity === index
-                            ? "translate-x-0"
-                            : "-translate-x-full"
-                        }`}
-                      />
-                    </div>
                   </div>
                 </div>
               ))}
             </div>
           </div>
 
-          {/* 학업 섹션 */}
-          <div className="my-10">
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div>
+            <div className="flex items-center mb-12">
+              <span className="text-md text-gray-900 dark:text-slate-100 uppercase mr-4">학력 및 자격</span>
+              <div className="flex-grow h-px bg-gray-100 dark:bg-slate-800" />
+            </div>
+
+            <div className="space-y-12">
               {educationData.map((item, index) => (
-                <div
-                  key={index}
-                  className={`group relative transform transition-all duration-700 ${
-                    isVisible
-                      ? "opacity-100 translate-y-0"
-                      : "opacity-0 translate-y-12"
-                  }`}
-                  style={{ transitionDelay: `${index * 200 + 200}ms` }}
-                  onMouseEnter={() => setHoveredEdu(index)}
-                  onMouseLeave={() => setHoveredEdu(null)}
+                <div 
+                  key={index} 
+                  className={`flex flex-col md:flex-row gap-4 md:gap-12 lg:gap-20 transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+                  style={{ transitionDelay: `${index * 150 + 450}ms` }}
                 >
-                  {/* 카드 배경 그라데이션 글로우 */}
-                  <div
-                    className={`pointer-events-none absolute -inset-2 rounded-2xl bg-gradient-to-r ${item.gradient} opacity-0 group-hover:opacity-10 blur transition-opacity duration-500`}
-                  />
-
-                  {/* 메인 카드 */}
-                  <div className="relative p-6 rounded-xl shadow-lg bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 transition-all duration-500 group-hover:-translate-y-2 group-hover:shadow-2xl overflow-hidden">
-                    {/* 상단 라인 + 진행 바 */}
-                    <div className="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-transparent via-gray-200 dark:via-slate-600 to-transparent opacity-50" />
-                    <div
-                      className={`absolute top-0 left-0 h-2 bg-gradient-to-r ${
-                        item.gradient
-                      } transform transition-[width] duration-700 ${
-                        hoveredEdu === index ? "w-full" : "w-0"
-                      }`}
-                    />
-
-                    {/* 아이콘과 타입 */}
-                    <div className="flex items-center mb-4">
-                      <div
-                        className={`mr-4 flex items-center justify-center p-3 rounded-lg bg-gradient-to-r ${
-                          item.gradient
-                        } transition-transform duration-500 ${
-                          hoveredEdu === index ? "scale-110 rotate-6" : ""
-                        }`}
-                      >
-                        <span className="text-white text-2xl">{item.icon}</span>
-                      </div>
-                      <span className="text-sm font-medium px-3 py-1 rounded-full bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300">
-                        {item.type === "education" ? "학업" : "자격증"}
-                      </span>
-                    </div>
-
-                    {/* 내용 */}
-                    <h4 className="text-lg font-semibold mb-2 text-gray-800 dark:text-white">
+                  <div className="md:w-32 pt-1 flex items-start gap-3">
+                    <span className="text-gray-300 dark:text-slate-700 mt-1">✧</span>
+                    <span className="text-sm font-bold text-gray-400 dark:text-slate-500 tabular-nums">
+                      {item.period}
+                    </span>
+                  </div>
+                  
+                  <div className="flex-grow">
+                    <h3 className="text-lg font-bold text-gray-800 dark:text-slate-100 mb-1">
                       {item.title}
-                    </h4>
-                    <p className="text-sm mb-2 text-gray-600 dark:text-gray-300">
+                    </h3>
+                    <p className="text-sm font-medium text-gray-500 dark:text-gray-500 mb-2">
                       {item.institution}
                     </p>
-                    <div className="flex items-center mb-3 text-gray-500 dark:text-gray-400">
-                      <span className="mr-2">📅</span>
-                      <span className="text-sm">{item.period}</span>
-                    </div>
-                    <p className="text-sm text-gray-600 dark:text-gray-300">
-                      {item.description}
-                    </p>
-
-                    {/* 하단 러너 바 */}
-                    <div className="absolute bottom-0 left-0 right-0 h-1 overflow-hidden rounded-b-xl">
-                      <div
-                        className={`h-full bg-gradient-to-r ${
-                          item.gradient
-                        } transform transition-transform duration-700 ${
-                          hoveredEdu === index
-                            ? "translate-x-0"
-                            : "-translate-x-full"
-                        }`}
-                      />
-                    </div>
                   </div>
                 </div>
               ))}

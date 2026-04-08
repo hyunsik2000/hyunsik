@@ -1,12 +1,11 @@
 import React, { useState, useEffect, useRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faHtml5,
-  faCss3Alt,
   faJs,
   faReact,
   faFigma,
   faGithub,
+  faAws,
 } from "@fortawesome/free-brands-svg-icons";
 import SlideUpSection from "../components/SlideUpSection";
 
@@ -14,6 +13,7 @@ const Skills = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [hoveredExp, setHoveredExp] = useState(null);
   const sectionRef = useRef(null);
+
   const TailwindIcon = ({ className }) => (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -25,65 +25,88 @@ const Skills = () => {
     </svg>
   );
 
+  const TypeScriptIcon = ({ className }) => (
+    <svg viewBox="0 0 100 100" className={className} xmlns="http://www.w3.org/2000/svg">
+      <rect width="100" height="100" rx="8" fill="#3178C6" />
+      <text
+        x="50"
+        y="68"
+        textAnchor="middle"
+        fill="white"
+        fontSize="38"
+        fontWeight="bold"
+        fontFamily="Arial, sans-serif"
+      >
+        TS
+      </text>
+    </svg>
+  );
+
+  const NextIcon = ({ className }) => (
+    <svg viewBox="0 0 180 180" className={className} xmlns="http://www.w3.org/2000/svg">
+      <circle cx="90" cy="90" r="90" fill="currentColor" />
+      <path
+        fill="white"
+        className="dark:fill-slate-900"
+        d="M149.508 157.52L69.142 54H54V125.97H66.1192V69.3836L139.999 164.845C143.333 162.614 146.509 160.165 149.508 157.52Z"
+      />
+      <rect x="115" y="54" width="12" height="72" fill="white" className="dark:fill-slate-900" />
+    </svg>
+  );
+
   const frontendSkills = [
-    {
-      name: "HTML5",
-      icon: faHtml5,
-      color:
-        "bg-orange-100 hover:bg-orange-200 dark:bg-orange-900/20 dark:hover:bg-orange-800/30",
-      iconColor: "text-orange-500 dark:text-orange-400",
-    },
-    {
-      name: "CSS3",
-      icon: faCss3Alt,
-      color:
-        "bg-blue-100 hover:bg-blue-200 dark:bg-blue-900/20 dark:hover:bg-blue-800/30",
-      iconColor: "text-blue-500 dark:text-blue-400",
-    },
     {
       name: "JavaScript",
       icon: faJs,
-      color:
-        "bg-yellow-100 hover:bg-yellow-200 dark:bg-yellow-900/20 dark:hover:bg-yellow-800/30",
       iconColor: "text-yellow-500 dark:text-yellow-400",
+    },
+    {
+      name: "TypeScript",
+      icon: TypeScriptIcon,
+      iconColor: "",
+      isSvg: true,
     },
     {
       name: "React",
       icon: faReact,
-      color:
-        "bg-cyan-100 hover:bg-cyan-200 dark:bg-cyan-900/20 dark:hover:bg-cyan-800/30",
       iconColor: "text-cyan-500 dark:text-cyan-400",
+    },
+    {
+      name: "Next.js",
+      icon: NextIcon,
+      iconColor: "text-slate-900 dark:text-slate-100",
+      isSvg: true,
     },
     {
       name: "Tailwind CSS",
       icon: TailwindIcon,
-      color:
-        "bg-teal-100 hover:bg-teal-200 dark:bg-teal-900/20 dark:hover:bg-teal-800/30",
       iconColor: "text-teal-500 dark:text-teal-400",
       isSvg: true,
     },
     {
+      name: "AWS",
+      icon: faAws,
+      iconColor: "text-orange-500 dark:text-orange-400",
+    },
+    {
       name: "GitHub",
       icon: faGithub,
-      color:
-        "bg-red-100 hover:bg-red-200 dark:bg-red-900/20 dark:hover:bg-red-800/30",
-      iconColor: "text-black dark:text-white",
+      iconColor: "text-gray-800 dark:text-slate-200",
     },
     {
       name: "Figma",
       icon: faFigma,
-      color:
-        "bg-purple-100 hover:bg-purple-200 dark:bg-purple-900/20 dark:hover:bg-purple-800/30",
       iconColor: "text-purple-500 dark:text-purple-400",
     },
   ];
 
   const additionalExperience = [
-    "Vercel 활용 프로젝트 배포",
-    "JWT 토큰을 활용한 권한 관리",
+    "Zustand 기반 전역 상태 관리",
+    "GitHub Actions + CodeDeploy CI/CD 파이프라인 구축",
+    "JWT 인증 및 httpOnly 쿠키 기반 인증 설계",
     "반응형 웹 구현",
-    "외부 API 사용 (Naver Map, Kakao Login)",
-    "SocketJs 기반 실시간 통신 환경 제공",
+    "외부 API 연동 (Naver Map, Kakao Login)",
+    "SocketJS 기반 실시간 통신",
   ];
 
   useEffect(() => {
@@ -115,18 +138,17 @@ const Skills = () => {
               현재 사용할 수 있는 기술들입니다.
             </p>
             <div
-              className="mx-auto mt-4 h-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full transition-all duration-1000 delay-500"
+              className="mx-auto mt-4 h-1 bg-gray-300 dark:bg-slate-600 rounded-full transition-all duration-1000 delay-500"
               style={{ width: isVisible ? "80px" : "0px" }}
             ></div>
           </div>
 
-          {/* Frontend Skills */}
           <div className="mb-12">
-            <div className="grid grid-cols-2 md:grid-cols-7 gap-4">
+            <div className="grid grid-cols-4 md:grid-cols-8 gap-4">
               {frontendSkills.map((skill, index) => (
                 <div
                   key={index}
-                  className={`group rounded-2xl p-2 text-center transition-all duration-300 cursor-pointer transform hover:-translate-y-2 hover:shadow-lg ${
+                  className={`group rounded-2xl p-2 text-center transition-all duration-300 cursor-pointer transform hover:-translate-y-2 ${
                     isVisible
                       ? "opacity-100 translate-y-0"
                       : "opacity-0 translate-y-8"
@@ -134,7 +156,7 @@ const Skills = () => {
                   style={{ transitionDelay: `${index * 100}ms` }}
                 >
                   <div className="text-4xl mb-3">
-                    <div className="transform transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6">
+                    <div className="transform transition-transform duration-300 group-hover:scale-110">
                       {skill.isSvg ? (
                         <skill.icon
                           className={`w-10 h-10 mx-auto ${skill.iconColor}`}
@@ -150,28 +172,22 @@ const Skills = () => {
                       {skill.name}
                     </h4>
                   </div>
-
-                  {/* 호버시 나타나는 미세한 글로우 효과 */}
-                  <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-10 transition-opacity duration-300 bg-gradient-to-br from-current to-transparent blur-xl -z-10"></div>
                 </div>
               ))}
             </div>
           </div>
 
-          {/* Skills Summary */}
           <div
-            className={`bg-white dark:bg-slate-900 rounded-2xl p-8 shadow-sm border border-gray-100 dark:border-slate-800 transition-all duration-1000 ${
-              isVisible ? "opacity-100" : "opacity-0"
+            className={`bg-white dark:bg-slate-900 rounded-2xl p-8 border border-gray-100 dark:border-slate-800 transition-all ${
+              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
             }`}
           >
             <div className="text-center mb-8">
-              <h3 className="text-xl font-semibold text-gray-900 dark:text-slate-100 mb-2 relative inline-block">
+              <h3 className="text-xl font-semibold text-gray-900 dark:text-slate-100 mb-2">
                 또 이런 경험도 있어요
-                {/* 제목 아래 작은 장식 */}
-                <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-12 h-0.5 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full"></div>
               </h3>
               <p className="text-gray-500 dark:text-slate-400 text-sm mt-4">
-                지속적으로 학습하고 도전하고 있는 기술들
+                프로젝트를 통해 직접 적용해본 기술들
               </p>
             </div>
 
@@ -180,25 +196,21 @@ const Skills = () => {
                 {additionalExperience.map((exp, index) => (
                   <div
                     key={index}
-                    className={`group flex items-center p-4 rounded-xl bg-gray-50 dark:bg-slate-800 hover:bg-gradient-to-r hover:from-blue-50 hover:to-purple-50 dark:hover:from-slate-800 dark:hover:to-slate-700 transition-all duration-300 cursor-default transform hover:-translate-y-1 hover:shadow-lg ${
+                    className={`group flex items-center p-4 rounded-xl bg-gray-50 dark:bg-slate-800 hover:bg-gray-100 dark:hover:bg-slate-700 transition-all cursor-default transform hover:-translate-y-1 ${
                       isVisible
-                        ? "opacity-100 translate-x-0"
-                        : "opacity-0 -translate-x-8"
+                        ? "opacity-100 translate-y-0"
+                        : "opacity-0 translate-y-4"
                     }`}
-                    style={{ transitionDelay: `${(index + 7) * 100}ms` }}
                     onMouseEnter={() => setHoveredExp(index)}
                     onMouseLeave={() => setHoveredExp(null)}
                   >
-                    {/* 아이콘 도트 */}
                     <div
                       className={`w-3 h-3 rounded-full mr-4 transition-all duration-300 ${
                         hoveredExp === index
-                          ? "bg-gradient-to-r from-blue-500 to-purple-500 scale-125"
+                          ? "bg-slate-700 dark:bg-slate-300 scale-125"
                           : "bg-gray-400 dark:bg-slate-600"
                       }`}
                     ></div>
-
-                    {/* 경험 텍스트 */}
                     <span
                       className={`text-sm transition-colors duration-300 ${
                         hoveredExp === index
@@ -209,26 +221,6 @@ const Skills = () => {
                       {exp}
                     </span>
                   </div>
-                ))}
-              </div>
-            </div>
-
-            {/* 하단 장식 */}
-            <div className="mt-8 flex justify-center">
-              <div className="flex space-x-2">
-                {[...Array(5)].map((_, i) => (
-                  <div
-                    key={i}
-                    className={`w-2 h-2 rounded-full bg-gradient-to-r from-blue-400 to-purple-400 transition-all duration-300 ${
-                      isVisible ? "opacity-100" : "opacity-0"
-                    }`}
-                    style={{
-                      transitionDelay: `${2000 + i * 100}ms`,
-                      animation: isVisible
-                        ? `pulse 2s infinite ${i * 0.2}s`
-                        : "none",
-                    }}
-                  ></div>
                 ))}
               </div>
             </div>
